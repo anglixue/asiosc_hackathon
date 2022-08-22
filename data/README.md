@@ -3,6 +3,7 @@
 Please download the data used in this analysis using the following links
 
 Example code to download a file using <span style="color: red;">wget</span>
+
 Example code to download a file using `wget`
 ```{bash, engine.opts='-l'}
 # Need to install wegt via homebrew (for Mac users) if you don't have it
