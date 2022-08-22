@@ -2,8 +2,8 @@
 
 Please download the data used in this analysis using the following links
 
+Example code to download a file using <span style="color: red;">wget</span>
 ```{bash, engine.opts='-l'}
-# Example code to download a file using <span style="color: red;">wget</span>
 # Need to install wegt via homebrew (for Mac users) if you don't have it
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
 ```
