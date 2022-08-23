@@ -1,6 +1,6 @@
 # ASI/OSC hackathon
 
-The code repository for the analysis in ASI/OSC Hackathon
+Here is the code repository for the analysis in ASI/OSC Hackathon
 
 There are three immunologists top challenges included in this Hackathon:
 
