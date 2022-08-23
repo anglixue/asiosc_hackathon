@@ -1,6 +1,6 @@
 # ASI/OSC hackathon
 
-Here is the code repository for the analysis in ASI/OSC Hackathon
+Here is the code repository of the analysis for the joint Australia Society of Immunology / Oz Single Cell Hackathon 
 
 There are three immunologists top challenges included in this Hackathon:
 

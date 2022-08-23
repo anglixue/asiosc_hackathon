@@ -25,5 +25,14 @@ ctrl2 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_0
 ctrl3 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_wholetranscriptome_protein.rds")
 case1 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_leukemia_protein.rds")
 
+# Check meta data
+ctrl1
+dim(ctrl1@meta.data)
+ctrl2
+dim(ctrl2@meta.data)
+ctrl3
+dim(ctrl3@meta.data)
+case1
+dim(case1@meta.data)
 
 ####
