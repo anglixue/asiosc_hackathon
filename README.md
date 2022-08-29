@@ -17,7 +17,7 @@ There are three immunologists top challenges included in this Hackathon:
     + 3a Hopefully have a normalised reference FACS whole blood data set. Perhaps healthy vs COVID
 
 
-I'll post the analysis pipeline specifically for the challenge #1 and #2
+I'll post the analysis pipeline specifically for the challenge #1 and #2 in `/main` folder
 
 The data download instructions can be found in the `/data` foloder
 
