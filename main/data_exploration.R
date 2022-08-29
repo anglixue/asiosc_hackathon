@@ -15,9 +15,20 @@ data2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_in
 
 # Check meta data
 data1
+# An object of class Seurat 
+# 192 features across 246964 samples within 1 assay 
+# Active assay: ADT (192 features, 0 variable features)
+# 1 dimensional reduction calculated: umap
+
 dim(data1@meta.data)
+# There are 123 columns of meta data information
+# Some typical meta data include nCount_RNA, nFeature_RNA, sex, age, batch, Pool, cell_type, sample_id, percent.mito
+
 data2
-dim(data2@meta.data)
+# An object of class Seurat 
+# 192 features across 125117 samples within 1 assay 
+# Active assay: ADT (192 features, 0 variable features)
+# 1 dimensional reduction calculated: umap
 
 #### Triana_et_al_Nat_Immunol_2021_Leukemia ####
 ctrl1 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_200ABs_protein.rds")
@@ -27,12 +38,28 @@ case1 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_0
 
 # Check meta data
 ctrl1
-dim(ctrl1@meta.data)
+# An object of class Seurat 
+# 197 features across 15502 samples within 1 assay 
+# Active assay: ADT (197 features, 0 variable features)
+# 2 dimensional reductions calculated: projected, projectedmean
+
 ctrl2
-dim(ctrl2@meta.data)
+# An object of class Seurat 
+# 97 features across 49057 samples within 1 assay 
+# Active assay: ADT (97 features, 0 variable features)
+# 10 dimensional reductions calculated: mofa, mofatsne, mofaumap, pca, projected, projectedmean, tsne, tsneni, umap, umapni
+
 ctrl3
-dim(ctrl3@meta.data)
+# An object of class Seurat 
+# 97 features across 13165 samples within 1 assay 
+# Active assay: ADT (97 features, 0 variable features)
+# 8 dimensional reductions calculated: bothtsne, bothumap, mofa, mofatsne, mofaumap, pca, projected, projectedmean
+
 case1
-dim(case1@meta.data)
+# An object of class Seurat 
+# 97 features across 31586 samples within 1 assay 
+# Active assay: ADT (97 features, 0 variable features)
+# 6 dimensional reductions calculated: bothumap, pca, projected, projectedmean, tsneni, umapni
+
 
 ####
