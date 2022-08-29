@@ -1,5 +1,6 @@
 ---
 title: "Azimuth annotation for COVID data "
+author: "Angli XUE"
 output:
   html_document:
     theme: united
@@ -138,7 +139,7 @@ Azimuth can also take the path to an h5ad object as input. In this case, Azimuth
 options(timeout = 1000)
 
 bm <- RunAzimuth(
-  query = "../data/human_cd34_bone_marrow.h5ad",
+  query = "~/Documents/Study/Post-doc/project/ASI_OZS_Hackathon/data/human_cd34_bone_marrow.h5ad",
   reference = "bonemarrowref"
 )
 ```
