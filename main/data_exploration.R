@@ -10,6 +10,7 @@ library(SeuratObject)
 
 
 #### Liu_et_al_Cell_2021_COVID ####
+## Technology: 10x 5' v1,CITE-seq
 data1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
 data2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
 
@@ -31,12 +32,13 @@ data2
 # 1 dimensional reduction calculated: umap
 
 #### Triana_et_al_Nat_Immunol_2021_Leukemia ####
+## Technology: targeted BD Rhapsody, Abseq
 ctrl1 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_200ABs_protein.rds")
 ctrl2 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_healthy_protein.rds")
 ctrl3 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_wholetranscriptome_protein.rds")
 case1 = readRDS("../data/Triana_et_al_Nat_Immunol_2021_Leukemia/10_1038_s41590_021_01059_0_leukemia_protein.rds")
 
-# Check meta data
+# Three control datasets
 ctrl1
 # An object of class Seurat 
 # 197 features across 15502 samples within 1 assay 
@@ -55,6 +57,7 @@ ctrl3
 # Active assay: ADT (97 features, 0 variable features)
 # 8 dimensional reductions calculated: bothtsne, bothumap, mofa, mofatsne, mofaumap, pca, projected, projectedmean
 
+# This is the data collected from patients of acute myeloid leukemia and acute promyelocytic leukemia
 case1
 # An object of class Seurat 
 # 97 features across 31586 samples within 1 assay 

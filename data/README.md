@@ -5,46 +5,80 @@ Please download the data used in this analysis using the following links
 Example code to download a file using `wget`
 ```{bash, engine.opts='-l'}
 # Need to install wegt via homebrew (for Mac users) if you don't have it
+setwd("../data/")
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
 ```
 
-## 1.  Liu_et_al_Cell_2021_COVID ([Link](https://doi.org/10.1016/j.cell.2021.02.018)) 
+## 1.  Liu_et_al_Cell_2021_COVID ([paper](https://doi.org/10.1016/j.cell.2021.02.018)) 
+
+### RNA rds
+For h5ad download please refer to [URL](https://cellxgene.cziscience.com/collections/ed9185e3-5b82-40c7-9824-b2141590c7f0)
+
+```{bash, engine.opts='l}
+curl -o 10_1016_j_cell_2021_02_018_adaptive_rna.rds "https://corpora-data-prod.s3.amazonaws.com/d571d7b3-84c7-4610-a994-c014ffd0eda8/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5X3OMZH6UB%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T034227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCzILybC7cwevTdY5M5GHTD2fGLyhMX32LyrMmwOYzyLgIhAIRNIfnVpLq2kJiAWIWDHr%2FGUe23Nnq6R8twEdqaEermKusDCCIQARoMMjMxNDI2ODQ2NTc1IgydKj7HFgOWRN3%2F7SsqyAOOv9ysLa3%2BZTn52M6DNK5gJ9sWL7Nqn7hO6f0vlqfuDq6IXqcOWXJJ%2BR8j0xY3fHSwhtiGlfbSKpX%2BOfr1MOzNyyIAQQYb9V9LPnY5pPbIs3kKT27Hlf7VD4K%2FjzFBqNeMUmY6aLaJrR2%2BNfF7Jm2QNGtopMSBlQWcnjRMzg63Ged7g7Jj51AILOZReXyWLXU%2BmlEsGq1ktGJ991OCWagQ8mG1Qdu0m0AAkYGWxUKlzekhzi%2B5ZelTBad%2BuK1jrIB2BTR%2FUQfe48JaPdb0qica7aKmU8zIRU7jwzTGBLwaAdNFQVQX3bh9m4Ryp2NCcarDN2dU%2BA0vfDEq5KWq%2FFJgapeBR7W0xZ5g161%2FbNF9RTpSrOWeNL0jI7opZ2lWfwz%2FhLS7Jyu4WNcMoOhJEuXxmool3ARdvWzxZptpJ1WIvtFQHHYs19auu%2FFvQOIYUN6UtGqzZynqv%2FYcz42KfqMCZrdRrCoymIyI8b7vfGYpxIVU376E4XMiLaAvy5QEbu5fVKP6%2Bmj1IZCsf6jXmCK%2FzrQMb%2FDJtoSM6u3FhgtEUe2%2BlKcl5SEDyqztyrKJJD%2FGw3uyG8Lb40QZJX1kS82QKbiUj5pJ%2BqowkKKwmAY6pAFHZFVaR%2Fz%2Fxgn%2Bj%2BNgGq3P%2F8v1N%2Fqzyrq8m%2F%2B8zZk1YKYwdPTXPmPCOoJ4tCC5qySleHLtPNTuge2otxhkhH713pVWU5V70qhuxkgAfQgb2NVh0184yEFwgw5YmijkafV7wjz6U3%2F3uJqkvE5aYz0Cfo6okPpD5OCc9K6vb%2Bi4VozwaIcVkWpAdoQz9hVh%2FYfVc5jUVoo3%2FmwEuGpJPH9Pfl89vA%3D%3D&X-Amz-Signature=320b49dfd9a37779adb0f5ebfa67d3d91134debd862b4472aa172f70b4e0680f"
+
+curl -o 10_1016_j_cell_2021_02_018_innate_rna.rds "https://corpora-data-prod.s3.amazonaws.com/e0ac2a4b-3e45-4174-b578-2fad03d3be5d/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5X4HICMJOZ%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T034526Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDKB3KNKK9Rm8TZBbK4d3IlCGgTcF9oKojX0SIEBtfKEAIhAOEDU4wgRMD%2FaDGizE%2FRK%2Bx8syer7zwaLO2akswAtTU4KusDCCEQARoMMjMxNDI2ODQ2NTc1Igz%2BEYnkf8RDkU2cUkoqyAOan6O7D%2F7VNIf%2Fwb7vazC1lQ3Jr%2FSdsBtDKGH5cfxCYh%2FjQDOW6owXiCEzsnyxGs0gd4XBzsEmwievkpMwmQvRisYfSjF99AbIirtw4nHgZHvMsWC17m3aUtTqopCxo2HTkmk3wfK1Mct%2F6BeTjA5EDrSyDGZGDlbZEwoMMSv67AX%2F8eAyL%2ForrSLq8kJN31z5666u0fxnFaq9PfZNe16D9XTyNILxI0z%2BYAkB47GZt3Lf2uZm%2F2yln%2B%2FU9Pe4hM3K0BG7PQqMJ45r0PJWvNPvGFx4Xbn67%2B1WL8PjhNZjQqyeDcTJvZZi9CXi0vCpE8MV1jtoXPUIaFUlwSOCrylxG0tqM4ZqBleeSvZMSr3YT2oqosMwZEmNmaOgxHgPdDvj2Lne33gUb6WN7BGkBA%2F47nsP50kBp4XwkrVoAliCLg912UOk1zT%2BGqrLD2VGxMPw23tDxSf0djMDoHWCB7cJc48HThfO4R0z%2FR3u%2BkaTWItn%2BcA6PrVt%2FltLO6BWPppATRpLMNw4IooaVmY0glWkhHcPfnJVWibZ06X8dTAMJrQgtaZ6ETGLx%2F8zrqxMFcwIbgDf6ZdYBYWZ796CQ2An9RhBpgqve74wkfyvmAY6pAGQ%2BQNmH2jWksvfKdENjcYKB6PsCigPGXw5el1tq8b8gaY%2B0ssh4kCVF89CNe9eW4HNm8%2BmL7KdmJfj%2F08fdrO11NnBDIPD7xTPQRm8Pdox85%2B0UxiSmY966%2F5xzaOIT8zeOvBDmduVgJCKvbzgFnfxaMOCG7kyLOPwm8Vtw8YkTjf%2FlHaShTyVM%2FkL%2Bn%2FuzhIKGoyd%2BkpL8Vejl8Pmh8bRUpAfkw%3D%3D&X-Amz-Signature=5082cf9d8f3e32732e54a8ac3718184edf4f59c533d4e36e3e55c6f8e38343ed"
+```
 
 ### protein h5ad url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
-
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_innate_protein.h5ad
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_innate_protein.h5ad
+```
 
 ### protein rds url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.rds
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.rds
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_innate_protein.rds
+```
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_innate_protein.rds
+## 2.  Triana_et_al_Nat_Immunol_2021_Leukemia ([paper](https://doi.org/10.1038/s41590-021-01059-0))
 
+### RNA rds
+For h5ad download please refer to [URL](https://cellxgene.cziscience.com/collections/93eebe82-d8c3-41bc-a906-63b5b5f24a9d)
 
-## 2.  Triana_et_al_Nat_Immunol_2021_Leukemia ([Link](https://doi.org/10.1038/s41590-021-01059-0))
+```{bash, engine.opts='l}
+# 3 healthy young and 3 healthy old bone marrow donors (Reference sample)
+# 49,057 cells
+curl -o 10_1038_s41590_021_01059_0_healthy_rna.rds "https://corpora-data-prod.s3.amazonaws.com/cd4c96bb-ad66-4e83-ba9e-a7df8790eb12/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5X4HICMJOZ%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T035139Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDKB3KNKK9Rm8TZBbK4d3IlCGgTcF9oKojX0SIEBtfKEAIhAOEDU4wgRMD%2FaDGizE%2FRK%2Bx8syer7zwaLO2akswAtTU4KusDCCEQARoMMjMxNDI2ODQ2NTc1Igz%2BEYnkf8RDkU2cUkoqyAOan6O7D%2F7VNIf%2Fwb7vazC1lQ3Jr%2FSdsBtDKGH5cfxCYh%2FjQDOW6owXiCEzsnyxGs0gd4XBzsEmwievkpMwmQvRisYfSjF99AbIirtw4nHgZHvMsWC17m3aUtTqopCxo2HTkmk3wfK1Mct%2F6BeTjA5EDrSyDGZGDlbZEwoMMSv67AX%2F8eAyL%2ForrSLq8kJN31z5666u0fxnFaq9PfZNe16D9XTyNILxI0z%2BYAkB47GZt3Lf2uZm%2F2yln%2B%2FU9Pe4hM3K0BG7PQqMJ45r0PJWvNPvGFx4Xbn67%2B1WL8PjhNZjQqyeDcTJvZZi9CXi0vCpE8MV1jtoXPUIaFUlwSOCrylxG0tqM4ZqBleeSvZMSr3YT2oqosMwZEmNmaOgxHgPdDvj2Lne33gUb6WN7BGkBA%2F47nsP50kBp4XwkrVoAliCLg912UOk1zT%2BGqrLD2VGxMPw23tDxSf0djMDoHWCB7cJc48HThfO4R0z%2FR3u%2BkaTWItn%2BcA6PrVt%2FltLO6BWPppATRpLMNw4IooaVmY0glWkhHcPfnJVWibZ06X8dTAMJrQgtaZ6ETGLx%2F8zrqxMFcwIbgDf6ZdYBYWZ796CQ2An9RhBpgqve74wkfyvmAY6pAGQ%2BQNmH2jWksvfKdENjcYKB6PsCigPGXw5el1tq8b8gaY%2B0ssh4kCVF89CNe9eW4HNm8%2BmL7KdmJfj%2F08fdrO11NnBDIPD7xTPQRm8Pdox85%2B0UxiSmY966%2F5xzaOIT8zeOvBDmduVgJCKvbzgFnfxaMOCG7kyLOPwm8Vtw8YkTjf%2FlHaShTyVM%2FkL%2Bn%2FuzhIKGoyd%2BkpL8Vejl8Pmh8bRUpAfkw%3D%3D&X-Amz-Signature=f3dc2331b3742deea1e8c18835cac8238c660f90dd78c319b52c348ab1668a50"
+
+# 15 leukemic bone marrow donors
+# 31,586 cells
+curl -o 10_1038_s41590_021_01059_0_leukemia_rna.rds "https://corpora-data-prod.s3.amazonaws.com/b3a5a10f-b1cb-4e8e-abce-bf345448625b/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5XWPNFNVXE%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T035435Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQC72oXF2PnBZ734EQQTpdKRa0aRUFdzfjFyH0WCQUimNgIhAJUZL3fi2qdM58TsNqmwemFyPLWV8EE%2FOFTr3dhuZ0kKKusDCCMQARoMMjMxNDI2ODQ2NTc1Igwd55NlzBTHtzmIxTgqyANl9eJM84kpxraZY9tsFvfQN6Ejaxi2Wy0QWidyDd6L6j9t8XpxkMTr18NR8FEoX%2FP5Qv8t11EmaOfoSEOpquChXusBNjecCeVDEJU%2Fmn3veWQKTZL6eQ811kww3RPlXCzIXyZllOsIavei8yErUrBMyRH8AkVQi5mw6JMFjq83X6VHYEbYS%2BN7%2BiSt3mr1RfSW%2F1VMWwEzhrMJ1SR9%2B2p0be2kYxAkxl%2FSSpYd5A5BKhFBP4mEeKoaieD%2BssSll0PgvZzyeE92f33PJIYBBpxXjgmh99G9bjrRQjHuJ5zJXvKavZZ1kh1WIPI1FamNcgZkuriMU%2F%2B8ZmpKXh6Wd8n4zFDROwIwa7Q4DIEEu1Yn5gk5dZVsIN1FZ%2BDnhnanooAFMGYPV%2FSKIrIrxapCs2YAMLTESY5DsF85lbDE4CaVDQMpn57DXRRm2WJ1Lwu7x7djz6fMB5hHIKuxVhIWhF9a3cJO%2FXhwzeK6SrQ5xA%2F8phVRl4c41zTHly%2FPPQmfQz2Gfvducno5RdGD1UT10ERNGvHO5vupacH88F6qMhtlEDc8UeCfdlG8u0j0ICvQHl2Cd8GoAIrGlH%2Fk4TtFqjBwbn0yEUU1CHgw2LmwmAY6pAFbscVy0xGZozs%2BQfOr7030484XUe0SLwwiUOM0qGAR4k7dwsrB2Ff705ea%2BreZZ5S0bFox07e8EDHG8pwYyrmQdphhxL1sfgfEZt0c9aLRS6pbbs1cbxbHhmBJCBIsq9NNc7syecT1treBySs%2FqzQLuCE0BPsSqjz1yr1RANC2HmJ9ID3q1PmmVPnmzb00C40iGvYkrov52kP14W8zkM3xeoo7Qw%3D%3D&X-Amz-Signature=4b1f340210f9301a4c22e3cc9e32e08933fbe38313b905af575e3dae5a82c50e"
+
+# blood and bone marrow from a healthy young donor
+# 15,502 cells 
+curl -o 10_1038_s41590_021_01059_0_200ABs_rna.rds "https://corpora-data-prod.s3.amazonaws.com/d3566d6a-a455-4a15-980f-45eb29114cab/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5XUW673JEU%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T035546Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIEnimtWYMoMjCUTndyJJS2C01qfXzTdMwO83Mh6c2bBvAiEAz%2BlX1zKghJ%2Fx1v%2BDs%2Beb9VcC3D8RpIf36LV9CRbydI8q6wMIIBABGgwyMzE0MjY4NDY1NzUiDI%2FqNz0KkqXFR6wCjirIAwtyZQD7LpnpfPy%2BC2xv4rbhVslsAdHCaiVLWFjrgBMKPxKbZFaODaMWBjigHaLtH8HbMZ%2BTkzttJK8seNUdxrsBVv3dxjOpjHQXNXzZqXK4SwOv80zZJ5JHqBHEhf%2Bd4fDUgvWtMVgspuJ2%2BMP%2F5VkdtJJbNHbXomw012v7720fMrR%2BIy5peAZlwXLYUN8YVtxPWbuXCC3lXUrFtvHVPAxT%2FvbrkHz6PVMWxC6dQJ%2Fpo9Gepqy3rc4c2mdsToVME7H3%2F%2FqE3HGh4AXaMH9pDB58iklsaD1aRYH54BfPBQQxw6S4CTZdXueoBRqFLW6Ad41ywtGD52NP25DWOV08JUIoWv7fIp3NjskN7e3P42zDN4FVTEisKlfFcpzHgMOG0BYTDQ%2BSoXDPcvlrB4%2FdLwFL%2BTQNHfFVyAEJkWBGPjbHjKkI06ZxQQEGk2MJczXuZ3vOgQEgqhz53BMAhxLjnoGV9qh%2FwxnKZBDuan5g%2FCYfNZWDIz9iUuza6VBOkgOO5k2ucjGewsY%2FhRZ3qFQ1GFXTVQubNgu5oDcKqoa8Ldu%2BoTXcgRD4%2Fq2dDezXPOHPE6%2Bo3yqJ1U5c%2BY6ZLE3sUrKCXDb%2FnIOQmDDS5K%2BYBjqlAeqQmb1cEMtTu9IRxMOv0vr%2FWf9Ei9HH%2BgRtOpAiBY5wcn3wTYEMKbPki3uS%2BRKnKnBxwWuWyQZSmEogQw5Pv81rVnSsoUtYW9G6MEQzotDToBU8ZEjyv4ubnHEJlo2JaJ6LXaR59d9Led%2FPvBTaho0hEy%2F5vU%2BKgFtxkqXT99XL7uoMqDgnjitV8Tbi%2B199ykYLmNkc4VzBB6kb6YCwpYU76O66HQ%3D%3D&X-Amz-Signature=a4f8f40ba4c1059640fee4d69b95f31bb76219a51014db82332028bb272fac88"
+
+# healthy young bone marrow donor
+# 13,165 cells
+curl -o 10_1038_s41590_021_01059_0_wholetranscriptome_rna.rds "https://corpora-data-prod.s3.amazonaws.com/c05fb583-eb2f-4e3a-8e74-f9bd6414e418/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5XUW673JEU%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T035633Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJHMEUCIEnimtWYMoMjCUTndyJJS2C01qfXzTdMwO83Mh6c2bBvAiEAz%2BlX1zKghJ%2Fx1v%2BDs%2Beb9VcC3D8RpIf36LV9CRbydI8q6wMIIBABGgwyMzE0MjY4NDY1NzUiDI%2FqNz0KkqXFR6wCjirIAwtyZQD7LpnpfPy%2BC2xv4rbhVslsAdHCaiVLWFjrgBMKPxKbZFaODaMWBjigHaLtH8HbMZ%2BTkzttJK8seNUdxrsBVv3dxjOpjHQXNXzZqXK4SwOv80zZJ5JHqBHEhf%2Bd4fDUgvWtMVgspuJ2%2BMP%2F5VkdtJJbNHbXomw012v7720fMrR%2BIy5peAZlwXLYUN8YVtxPWbuXCC3lXUrFtvHVPAxT%2FvbrkHz6PVMWxC6dQJ%2Fpo9Gepqy3rc4c2mdsToVME7H3%2F%2FqE3HGh4AXaMH9pDB58iklsaD1aRYH54BfPBQQxw6S4CTZdXueoBRqFLW6Ad41ywtGD52NP25DWOV08JUIoWv7fIp3NjskN7e3P42zDN4FVTEisKlfFcpzHgMOG0BYTDQ%2BSoXDPcvlrB4%2FdLwFL%2BTQNHfFVyAEJkWBGPjbHjKkI06ZxQQEGk2MJczXuZ3vOgQEgqhz53BMAhxLjnoGV9qh%2FwxnKZBDuan5g%2FCYfNZWDIz9iUuza6VBOkgOO5k2ucjGewsY%2FhRZ3qFQ1GFXTVQubNgu5oDcKqoa8Ldu%2BoTXcgRD4%2Fq2dDezXPOHPE6%2Bo3yqJ1U5c%2BY6ZLE3sUrKCXDb%2FnIOQmDDS5K%2BYBjqlAeqQmb1cEMtTu9IRxMOv0vr%2FWf9Ei9HH%2BgRtOpAiBY5wcn3wTYEMKbPki3uS%2BRKnKnBxwWuWyQZSmEogQw5Pv81rVnSsoUtYW9G6MEQzotDToBU8ZEjyv4ubnHEJlo2JaJ6LXaR59d9Led%2FPvBTaho0hEy%2F5vU%2BKgFtxkqXT99XL7uoMqDgnjitV8Tbi%2B199ykYLmNkc4VzBB6kb6YCwpYU76O66HQ%3D%3D&X-Amz-Signature=4a7ab8b4f518f7a391d4d8a6ab8748d58e938bb99d09093114bcce20abbde0a8"
+
+```
 
 ### protein h5ad url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_healthy_protein.h5ad
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_healthy_protein.h5ad
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_leukemia_protein.h5ad
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_leukemia_protein.h5ad
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_200ABs_protein.h5ad
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_200ABs_protein.h5ad
-
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.h5ad
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.h5ad
+```
 
 ### protein rds url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_healthy_protein.rds
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_healthy_protein.rds
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_leukemia_protein.rds
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_leukemia_protein.rds
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_200ABs_protein.rds
 
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_200ABs_protein.rds
-
-https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.rds
-
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.rds
+```
 
 
 
