@@ -1,5 +1,6 @@
 ---
-title: "Azimuth annotation for COVID data "
+title: "Azimuth annotation for COVID data"
+subtitle: 'Analysis for ASI/OSC Hackathon'
 author: "Angli XUE"
 output:
   html_document:
