@@ -37,9 +37,9 @@ This vignette demonstrates how to map scRNA-seq data from Liu et al. (Cell. 2021
 
 The code pipeline was forked from https://github.com/satijalab/azimuth/blob/HEAD/vignettes/run_azimuth_tutorial.Rmd
 
-Reference-based mapping provides an attractive alternative to unsupervised analysis. When well-curated and annotated references are available, reference-mapping can rapdidly, robustly, and sensitively annotate and interpret query datasets. As part of the [Human Biomolecular Atlas Project](portal.hubmapconsortium.org), we have built integrated references for multiple human tissues, available at [azimuth.hubmapconsortium.org](azimuth.hubmapconsortium.org). Azimuth is a web-tool that maps user-uploaded datasets - starting from an unnormalized expression counts matrix.
+Reference-based mapping provides an attractive alternative to unsupervised analysis. When well-curated and annotated references are available, reference-mapping can rapdidly, robustly, and sensitively annotate and interpret query datasets. As part of the [Human Biomolecular Atlas Project](portal.hubmapconsortium.org), The Satija Team have built integrated references for multiple human tissues, available at [azimuth.hubmapconsortium.org](azimuth.hubmapconsortium.org). Azimuth is a web-tool that maps user-uploaded datasets - starting from an unnormalized expression counts matrix.
 
-We have recently released updated software that enables the Azimuth workflow to be replicated directly in R, without the need to upload data into the web application. Reference datasets are automatically downloaded as part of out previously released [SeuratData](https://github.com/satijalab/seurat-data) framework. Datasets can then be passed through Azimuth using a single command. 
+The Satija Team have recently released updated software that enables the Azimuth workflow to be replicated directly in R, without the need to upload data into the web application. Reference datasets are automatically downloaded as part of out previously released [SeuratData](https://github.com/satijalab/seurat-data) framework. Datasets can then be passed through Azimuth using a single command. 
 
 As with the web application, Azimuth is compatible with a wide range of inputs, including Seurat objects, 10x HDF5 files, and Scanpy/h5ad files. Once Azimuth is run, a Seurat object is returned which contains
 
@@ -77,44 +77,95 @@ library(Azimuth)
 library(SeuratData)
 library(patchwork)
 library(glmGamPoi)
+library(dplyr)
+library(ggplot2)
+source("./src/recode.R")
 ```
 
-## Map PBMC scRNA-seq datasets from 7 different technologies
+## Map COVID PBMC datasets based on scRNA-seq and/or CITE-seq
 
-We first consider a benchmark dataset from [Systematic comparison of single-cell and single-nucleus RNA-sequencing methods, Nat. Biotech 2020](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7289686/), which profiled a total of 31,021 human peripheral blood mononuclear cells (PBMCs) using seven different experimental technologies. The raw data is avaialble for download [here](https://singlecell.broadinstitute.org/single_cell/study/SCP424/single-cell-comparison-pbmc-data), but the dataset is also available for easy loading via SeuratData. We load the data in, and map it to our [PBMC reference](https://azimuth.hubmapconsortium.org/references/#Human%20-%20PBMC).
+We consider a COVID dataset from [Time-resolved systems immunology reveals a late juncture linked to fatal COVID-19, Cell 2021](https://pubmed.ncbi.nlm.nih.gov/33713619/), which profiled a total of 372,081 human peripheral blood mononuclear cells (PBMCs) from 46 donors (33 COVID patients) using scRNA-seq and CITE-seq. The download links for the raw data are [here](https://docs.google.com/spreadsheets/d/1ktYSwelU0LKWua0OGWDQUt3GEHb2VtGHCW8ZvoyF5IE/edit?usp=sharing). We read the data in, and map it to the Azimuth [PBMC reference](https://azimuth.hubmapconsortium.org/references/#Human%20-%20PBMC).
 
-```{r pbmc_load, results='hide'}
+Let's first visualize the data to replicate the Figure 2B in the paper.
+
+```{r pbmc_dimplot, fig.width=12, fig.height=5}
 ## Read in Liu_et_al_Cell_2021_COVID data
-rna1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_rna.rds")
-rna2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_rna.rds")
+rna1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_rna.rds")
+rna2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_rna.rds")
 
-prot1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
-prot2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
+prot1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
+prot2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
 
+p1 <- DimPlot(rna1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Innate cell only: 125,117 cells")
+p2 <- DimPlot(rna2, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Adaptive cell only: 246,964 cells")
+p1 + p2
+```
+
+The UMAP plots are the same as Figure 2B. Then we start to explore the datasets in more details
+
+```{r data_explore, results='hide'}
 # Note that since measurements were made in the same cells, the two matrices have identical column names
 all.equal(colnames(rna1), colnames(prot1))
 all.equal(colnames(rna2), colnames(prot2))
 
-cbmc <- CreateSeuratObject(counts = rna2@assays$RNA@data)
-# Add the ADT assay to the RNA Seurat object
-adt_assay <- CreateAssayObject(counts = prot2@assays$ADT@counts)
-cbmc[["ADT"]] <- adt_assay
+# The counts slot for rna data is empty. Why? Save space?
+dim(rna1@assays$RNA@counts)
+# Assign the data slot back to counts slot
+rna1@assays$RNA@counts = rna1@assays$RNA@data
+rna2@assays$RNA@counts = rna2@assays$RNA@data
 
-# The RunAzimuth function can take a Seurat object as input
-# The ADT assay stands for "antibody-derived tags"
-DefaultAssay(cbmc) <- "ADT"
-data1 <- RunAzimuth(cbmc, assay = "ADT", reference = "pbmcref")
+# I remember the data slot should store the log-normalized counts
+# Don't know why these two slots are equivalent
+# https://github.com/satijalab/seurat/issues/3711
+all(prot1@assays$ADT@data == prot1@assays$ADT@counts)
+all(prot2@assays$ADT@data == prot2@assays$ADT@counts)
+
+# Set a key for the assays otherwise will get error in vapply
+# https://github.com/satijalab/seurat/issues/5676
+rna1@assays$RNA@key = "rna1_"
+prot1@assays$ADT@key = "adt1_"
+rna2@assays$RNA@key = "rna2_"
+prot2@assays$ADT@key = "adt2_"
 ```
 
-We can now visualize the outputs of Azimuth. Note that all cells are labeled with high-resolution annotations, and are projected into a harmonized space despite being analyzed from a wide variety of technologies.
+Question: can we use the ADT assay to annotate the cell type?
+
+```{r ADT_assay, results='hide'}
+
+# Question: can we use the ADT assay to annotate the cell type?
+
+prot1 <- NormalizeData(prot1, normalization.method = 'CLR', margin = 2)
+prot1 <- FindVariableFeatures(prot1)
+prot1 <- ScaleData(prot1)
+prot1 <- RunPCA(prot1, verbose = TRUE)
+prot1 <- FindNeighbors(prot1, dims = 1:15)
+prot1 <- FindClusters(prot1, resolution = 1, verbose = TRUE)
+prot1 <- RunUMAP(prot1, dims = 1:30)
+
+# Add the ADT assay to the RNA Seurat object
+# The ADT assay stands for "antibody-derived tags"
+# adt_assay <- CreateAssayObject(counts = prot1@assays$ADT@data)
+# rna1[["ADT"]] <- adt_assay
+
+```
+
+
+Run the main function of Azimuth annotation
+
+```{r run Azimuth, results='hide'}
+# The RunAzimuth function can take a Seurat object as input
+DefaultAssay(prot1) <- "ADT"
+prot1 <- RunAzimuth(prot1, assay = "ADT", reference = "pbmcref")
+```
+
+We can now visualize the outputs of Azimuth. Note that all cells are labeled with high-resolution annotations. Previously this dataset was annotated with 10 cell types for innate cells and 14 cell types for adaptive cells.
 
 ```{r pbmc_dimplot, fig.width=12, fig.height=5}
-cbmc@reductions = prot2@reductions
-cbmc@meta.data$cell_type = prot2@meta.data$cell_type
-cbmc@meta.data$ethnicity = prot2@meta.data$ethnicity
 
-p1 <- DimPlot(cbmc, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend()
-p2 <- DimPlot(cbmc, group.by = "ethnicity")
+# data2$cell_type <- rename_cells2(data2$cell_type)
+
+p1 <- DimPlot(data1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Innate cell only: 125,117 cells")
+p2 <- DimPlot(data1, group.by = "ethnicity")
 p1 + p2
 ```
 
@@ -158,7 +209,7 @@ Azimuth can also take the path to an h5ad object as input. In this case, Azimuth
 options(timeout = 1000)
 
 bm <- RunAzimuth(
-  query = "~/Documents/Study/Post-doc/project/ASI_OZS_Hackathon/data/human_cd34_bone_marrow.h5ad",
+  query = "../data/human_cd34_bone_marrow.h5ad",
   reference = "bonemarrowref"
 )
 ```
