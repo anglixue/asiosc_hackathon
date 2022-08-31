@@ -85,19 +85,36 @@ We first consider a benchmark dataset from [Systematic comparison of single-cell
 
 ```{r pbmc_load, results='hide'}
 ## Read in Liu_et_al_Cell_2021_COVID data
-data1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
-data2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
+rna1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_rna.rds")
+rna2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_rna.rds")
+
+prot1 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
+prot2 = readRDS("../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
+
+# Note that since measurements were made in the same cells, the two matrices have identical column names
+all.equal(colnames(rna1), colnames(prot1))
+all.equal(colnames(rna2), colnames(prot2))
+
+cbmc <- CreateSeuratObject(counts = rna2@assays$RNA@data)
+# Add the ADT assay to the RNA Seurat object
+adt_assay <- CreateAssayObject(counts = prot2@assays$ADT@counts)
+cbmc[["ADT"]] <- adt_assay
 
 # The RunAzimuth function can take a Seurat object as input
 # The ADT assay stands for "antibody-derived tags"
-data1 <- RunAzimuth(data1, assay = "ADT", reference = "pbmcref")
+DefaultAssay(cbmc) <- "ADT"
+data1 <- RunAzimuth(cbmc, assay = "ADT", reference = "pbmcref")
 ```
 
 We can now visualize the outputs of Azimuth. Note that all cells are labeled with high-resolution annotations, and are projected into a harmonized space despite being analyzed from a wide variety of technologies.
 
 ```{r pbmc_dimplot, fig.width=12, fig.height=5}
-p1 <- DimPlot(pbmcsca, group.by = "predicted.celltype.l2", label = TRUE, label.size = 3) + NoLegend()
-p2 <- DimPlot(pbmcsca, group.by = "Method")
+cbmc@reductions = prot2@reductions
+cbmc@meta.data$cell_type = prot2@meta.data$cell_type
+cbmc@meta.data$ethnicity = prot2@meta.data$ethnicity
+
+p1 <- DimPlot(cbmc, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend()
+p2 <- DimPlot(cbmc, group.by = "ethnicity")
 p1 + p2
 ```
 

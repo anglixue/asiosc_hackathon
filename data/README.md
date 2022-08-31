@@ -15,16 +15,11 @@ wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney
 For h5ad download please refer to [URL](https://cellxgene.cziscience.com/collections/ed9185e3-5b82-40c7-9824-b2141590c7f0)
 
 ```{bash, engine.opts='l}
+# 246,964 adaptive Cells
 curl -o 10_1016_j_cell_2021_02_018_adaptive_rna.rds "https://corpora-data-prod.s3.amazonaws.com/d571d7b3-84c7-4610-a994-c014ffd0eda8/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5X3OMZH6UB%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T034227Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJn%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQCzILybC7cwevTdY5M5GHTD2fGLyhMX32LyrMmwOYzyLgIhAIRNIfnVpLq2kJiAWIWDHr%2FGUe23Nnq6R8twEdqaEermKusDCCIQARoMMjMxNDI2ODQ2NTc1IgydKj7HFgOWRN3%2F7SsqyAOOv9ysLa3%2BZTn52M6DNK5gJ9sWL7Nqn7hO6f0vlqfuDq6IXqcOWXJJ%2BR8j0xY3fHSwhtiGlfbSKpX%2BOfr1MOzNyyIAQQYb9V9LPnY5pPbIs3kKT27Hlf7VD4K%2FjzFBqNeMUmY6aLaJrR2%2BNfF7Jm2QNGtopMSBlQWcnjRMzg63Ged7g7Jj51AILOZReXyWLXU%2BmlEsGq1ktGJ991OCWagQ8mG1Qdu0m0AAkYGWxUKlzekhzi%2B5ZelTBad%2BuK1jrIB2BTR%2FUQfe48JaPdb0qica7aKmU8zIRU7jwzTGBLwaAdNFQVQX3bh9m4Ryp2NCcarDN2dU%2BA0vfDEq5KWq%2FFJgapeBR7W0xZ5g161%2FbNF9RTpSrOWeNL0jI7opZ2lWfwz%2FhLS7Jyu4WNcMoOhJEuXxmool3ARdvWzxZptpJ1WIvtFQHHYs19auu%2FFvQOIYUN6UtGqzZynqv%2FYcz42KfqMCZrdRrCoymIyI8b7vfGYpxIVU376E4XMiLaAvy5QEbu5fVKP6%2Bmj1IZCsf6jXmCK%2FzrQMb%2FDJtoSM6u3FhgtEUe2%2BlKcl5SEDyqztyrKJJD%2FGw3uyG8Lb40QZJX1kS82QKbiUj5pJ%2BqowkKKwmAY6pAFHZFVaR%2Fz%2Fxgn%2Bj%2BNgGq3P%2F8v1N%2Fqzyrq8m%2F%2B8zZk1YKYwdPTXPmPCOoJ4tCC5qySleHLtPNTuge2otxhkhH713pVWU5V70qhuxkgAfQgb2NVh0184yEFwgw5YmijkafV7wjz6U3%2F3uJqkvE5aYz0Cfo6okPpD5OCc9K6vb%2Bi4VozwaIcVkWpAdoQz9hVh%2FYfVc5jUVoo3%2FmwEuGpJPH9Pfl89vA%3D%3D&X-Amz-Signature=320b49dfd9a37779adb0f5ebfa67d3d91134debd862b4472aa172f70b4e0680f"
 
+# 125,117 innate cells
 curl -o 10_1016_j_cell_2021_02_018_innate_rna.rds "https://corpora-data-prod.s3.amazonaws.com/e0ac2a4b-3e45-4174-b578-2fad03d3be5d/local.rds?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIATLYQ5N5X4HICMJOZ%2F20220829%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220829T034526Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLXdlc3QtMiJIMEYCIQDKB3KNKK9Rm8TZBbK4d3IlCGgTcF9oKojX0SIEBtfKEAIhAOEDU4wgRMD%2FaDGizE%2FRK%2Bx8syer7zwaLO2akswAtTU4KusDCCEQARoMMjMxNDI2ODQ2NTc1Igz%2BEYnkf8RDkU2cUkoqyAOan6O7D%2F7VNIf%2Fwb7vazC1lQ3Jr%2FSdsBtDKGH5cfxCYh%2FjQDOW6owXiCEzsnyxGs0gd4XBzsEmwievkpMwmQvRisYfSjF99AbIirtw4nHgZHvMsWC17m3aUtTqopCxo2HTkmk3wfK1Mct%2F6BeTjA5EDrSyDGZGDlbZEwoMMSv67AX%2F8eAyL%2ForrSLq8kJN31z5666u0fxnFaq9PfZNe16D9XTyNILxI0z%2BYAkB47GZt3Lf2uZm%2F2yln%2B%2FU9Pe4hM3K0BG7PQqMJ45r0PJWvNPvGFx4Xbn67%2B1WL8PjhNZjQqyeDcTJvZZi9CXi0vCpE8MV1jtoXPUIaFUlwSOCrylxG0tqM4ZqBleeSvZMSr3YT2oqosMwZEmNmaOgxHgPdDvj2Lne33gUb6WN7BGkBA%2F47nsP50kBp4XwkrVoAliCLg912UOk1zT%2BGqrLD2VGxMPw23tDxSf0djMDoHWCB7cJc48HThfO4R0z%2FR3u%2BkaTWItn%2BcA6PrVt%2FltLO6BWPppATRpLMNw4IooaVmY0glWkhHcPfnJVWibZ06X8dTAMJrQgtaZ6ETGLx%2F8zrqxMFcwIbgDf6ZdYBYWZ796CQ2An9RhBpgqve74wkfyvmAY6pAGQ%2BQNmH2jWksvfKdENjcYKB6PsCigPGXw5el1tq8b8gaY%2B0ssh4kCVF89CNe9eW4HNm8%2BmL7KdmJfj%2F08fdrO11NnBDIPD7xTPQRm8Pdox85%2B0UxiSmY966%2F5xzaOIT8zeOvBDmduVgJCKvbzgFnfxaMOCG7kyLOPwm8Vtw8YkTjf%2FlHaShTyVM%2FkL%2Bn%2FuzhIKGoyd%2BkpL8Vejl8Pmh8bRUpAfkw%3D%3D&X-Amz-Signature=5082cf9d8f3e32732e54a8ac3718184edf4f59c533d4e36e3e55c6f8e38343ed"
-```
-
-### protein h5ad url
-```{bash, engine.opts='l}
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
-
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_innate_protein.h5ad
 ```
 
 ### protein rds url
@@ -32,6 +27,13 @@ wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.rds
 
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1016_j_cell_2021_02_018_innate_protein.rds
+```
+
+### protein h5ad url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_adaptive_protein.h5ad
+
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1016_j_cell_2021_02_018_innate_protein.h5ad
 ```
 
 ## 2.  Triana_et_al_Nat_Immunol_2021_Leukemia ([paper](https://doi.org/10.1038/s41590-021-01059-0))
@@ -58,17 +60,6 @@ curl -o 10_1038_s41590_021_01059_0_wholetranscriptome_rna.rds "https://corpora-d
 
 ```
 
-### protein h5ad url
-```{bash, engine.opts='l}
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_healthy_protein.h5ad
-
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_leukemia_protein.h5ad
-
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_200ABs_protein.h5ad
-
-wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.h5ad
-```
-
 ### protein rds url
 ```{bash, engine.opts='l}
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_healthy_protein.rds
@@ -78,6 +69,17 @@ wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_200ABs_protein.rds
 
 wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/Seurat/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.rds
+```
+
+### protein h5ad url
+```{bash, engine.opts='l}
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_healthy_protein.h5ad
+
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_leukemia_protein.h5ad
+
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_200ABs_protein.h5ad
+
+wget https://submissions-lattice.s3.us-west-1.amazonaws.com/may2022_blood_kidney/AnnData/Protein/10_1038_s41590_021_01059_0_wholetranscriptome_protein.h5ad
 ```
 
 
