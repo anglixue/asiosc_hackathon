@@ -44,5 +44,42 @@ rename_cells2 <- function(cell_type){
 
 }
 
+# tmp=data.frame(cell_type=c(unique((prot1$cell_type)),unique((prot2$cell_type))),new_name=NA)
+# rc = paste0("\`", tmp$cell_type, "\`"," = ", "'", tmp$new_name, "'", ",")
+# write.table(rc,"./src/cell_type_annotations_Liu_et_al_Cell_2021.txt", row.names = F, quote = F, col.names = F)
+
+# This rename function is to get consistent annotations with that in Liu et al. Cell 2021.
+rename_cells <- function(cell_type){
+  recode(cell_type,
+
+	`non-classical monocyte` = 'Mono_NonClassical',
+	`classical monocyte` = 'Mono_Classical',
+	`CD16-positive, CD56-dim natural killer cell, human` = 'NK_CD56dimCD16hi',
+	`natural killer cell` = 'NK_CD56loCD16lo',
+	`plasmacytoid dendritic cell` = 'pDC',
+	`conventional dendritic cell` = 'cDC',
+	`platelet` = 'Platelets',
+	`CD16-negative, CD56-bright natural killer cell, human` = 'NK_CD56hiCD16lo',
+	`granulocyte` = 'Granulocytes',
+	`intermediate monocyte` = 'Mono_Intermediate',
+	`naive B cell` = 'B_Naive',
+	`memory B cell` = 'B_Mem',
+	`gamma-delta T cell` = 'γδT',
+	`plasmablast` = 'PB_Plasmablasts',
+	`regulatory T cell` = 'Treg',
+	`CD4-positive, alpha-beta memory T cell` = 'CD4_Mem',
+	`CD8-positive, alpha-beta memory T cell` = 'CD8_Mem',
+	`naive thymus-derived CD8-positive, alpha-beta T cell` = 'CD8_Naive',
+	`naive thymus-derived CD4-positive, alpha-beta T cell` = 'CD4_Naive',
+	`mucosal invariant T cell` = 'MAIT',
+	`memory T cell` = 'TissueResMem_T',
+	`double-positive, alpha-beta thymocyte` = 'DPT',
+	`double negative thymocyte` = 'DNT',
+	`T cell` = 'TCRVβ13.1pos'
+
+  )
+}
+
+
 
 ####

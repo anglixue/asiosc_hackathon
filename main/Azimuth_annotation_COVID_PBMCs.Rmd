@@ -52,9 +52,10 @@ In this vignette, we demonstrate the use of a function `RunAzimuth()` which faci
 <details>
   <summary>**View data download code**</summary>
   
-  To download all the required files, you can run the following lines in a shell:
+  To download all the required files, please check the `/data` folder:
   
 ```{sh, eval=FALSE}
+# Example code for illustration purposes only
 wget https://figshare.com/ndownloader/files/27686835 -O human_cd34_bone_marrow.h5ad
 ```
 
@@ -79,7 +80,11 @@ library(patchwork)
 library(glmGamPoi)
 library(dplyr)
 library(ggplot2)
-source("~/Documents/Study/Post-doc/project/ASI_OZS_Hackathon/asiosc_hackathon/src/recode.R")
+
+library(knitr)
+library(kableExtra)
+library(rmarkdown)
+source("../src/recode.R")
 ```
 
 # Map COVID PBMC datasets based on scRNA-seq and/or CITE-seq
@@ -88,22 +93,40 @@ We consider a COVID dataset from [Time-resolved systems immunology reveals a lat
 
 Let's first visualize the data to replicate the Figure 2B in the paper.
 
-```{r pbmc_dimplot_check, fig.width = 12, fig.height = 5, eval = FALSE}
+```{r pbmc_dimplot_check, fig.width = 12, fig.height = 5}
 ## Read in Liu_et_al_Cell_2021_COVID data
 rna1 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_rna.rds")
 rna2 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_rna.rds")
 
-# prot1 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
-# prot2 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
+prot1 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_innate_protein.rds")
+prot2 = readRDS("../../data/Liu_et_al_Cell_2021_COVID/10_1016_j_cell_2021_02_018_adaptive_protein.rds")
 
-p1 <- DimPlot(rna1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Innate cell only: 125,117 cells")
-p2 <- DimPlot(rna2, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Adaptive cell only: 246,964 cells")
+# Rename the cell type
+prot1$cell_type_abbr = rename_cells(prot1$cell_type)
+prot2$cell_type_abbr = rename_cells(prot2$cell_type)
+
+p1 <- DimPlot(prot1, group.by = "cell_type_abbr", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Innate cell only: 125,117 cells")
+p2 <- DimPlot(prot2, group.by = "cell_type_abbr", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Adaptive cell only: 246,964 cells")
 p1 + p2
 ```
 
 The UMAP plots are the same as Figure 2B. Then we start to explore the datasets in more details
 
-```{r data_explore, results='hide', eval = FALSE}
+Here are the cell type names and corresponding ontology IDs
+```{r check cell type ID, echo = FALSE}
+ct = data.frame(cell_type = c(prot1$cell_type,prot2$cell_type),cell_type_ontology_term_id = c(prot1$cell_type_ontology_term_id,prot2$cell_type_ontology_term_id))
+ct = ct[!duplicated(ct$cell_type),]
+rownames(ct) = 1:nrow(ct)
+ct$cell_type_abbr = rename_cells(ct$cell_type)
+ct = ct[,c(1,3,2)]
+
+ct %>%
+  kbl() %>%
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
+```
+
+
+```{r data_explore}
 # Note that since measurements were made in the same cells, the two matrices have identical column names
 all.equal(colnames(rna1), colnames(prot1))
 all.equal(colnames(rna2), colnames(prot2))
@@ -129,12 +152,12 @@ prot2@assays$ADT@key = "adt2_"
 
 # Merge the RNA and protein data separately first
 data1 <- merge(rna1, y = rna2, add.cell.ids = c("Innate", "Adaptive"))
-# data2 <- merge(prot1, y = prot2, add.cell.ids = c("Innate", "Adaptive"))
+data2 <- merge(prot1, y = prot2, add.cell.ids = c("Innate", "Adaptive"))
 ```
 
 Clustering the data based on RNA-seq
 
-```{r RNA_assay, results='hide', eval = FALSE}
+```{r RNA_assay, results='hide'}
 data1 <- NormalizeData(data1)
 data1 <- FindVariableFeatures(data1)
 data1 <- ScaleData(data1)
@@ -146,25 +169,25 @@ data1 <- RunUMAP(data1, dims = 1:30)
 
 Run the main function of Azimuth annotation based on RNA-seq
 
-```{r run_Azimuth_by_RNA-seq, results='hide', eval = FALSE}
+```{r run_Azimuth_by_RNA-seq, results='hide'}
 # The RunAzimuth function can take a Seurat object as input
 DefaultAssay(data1) <- "RNA"
 data1 <- RunAzimuth(data1, assay = "RNA", reference = "pbmcref")
-# saveRDS(data1,"../results/innate_adapative_rna_processed.rds")
+saveRDS(data1,"../../results/innate_adapative_rna_processed.rds")
 ```
 
 We can now visualize the outputs of Azimuth. Previously this dataset was annotated with 10 cell types for innate cells and 14 cell types for adaptive cells.
 
-```{r pbmc_dimplot_RNA, fig.width=12, fig.height=5, eval = FALSE}
+```{r pbmc_dimplot_RNA, fig.width=12, fig.height=5}
 # data1 <- readRDS("../results/innate_adapative_rna_processed.rds")
-p1 <- DimPlot(data1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Previous RNA annotation")
-p2 <- DimPlot(data1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Current RNA annotation")
+p1 <- DimPlot(data1, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Previous annotation")
+p2 <- DimPlot(data1, group.by = "predicted.celltype.l2", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Current RNA annotation")
 p1 + p2
 ```
 
 Question: can we use the ADT assay to annotate the cell type?
 
-```{r ADT_assay, results='hide', eval = FALSE}
+```{r ADT_assay, results='hide'}
 data2 <- NormalizeData(data2, normalization.method = 'CLR', margin = 2)
 data2 <- FindVariableFeatures(data2)
 data2 <- ScaleData(data2)
@@ -176,16 +199,16 @@ data2 <- RunUMAP(data2, dims = 1:30)
 
 Run the main function of Azimuth annotation based on CITE-seq
 
-```{r run_Azimuth_by_CITE-seq, results='hide', eval = FALSE}
+```{r run_Azimuth_by_CITE-seq, results='hide'}
 # The RunAzimuth function can take a Seurat object as input
 DefaultAssay(data2) <- "ADT"
 data2 <- RunAzimuth(data2, assay = "ADT", reference = "pbmcref")
-# saveRDS(data2,"../results/innate_adaptive_protein_processed.rds")
+saveRDS(data2,"../../results/innate_adaptive_protein_processed.rds")
 ```
 
 We can now visualize the outputs of Azimuth. Previously this dataset was annotated with 10 cell types for innate cells and 14 cell types for adaptive cells.
 
-```{r pbmc_dimplot_ADT, fig.width=12, fig.height=5, eval = FALSE}
+```{r pbmc_dimplot_ADT, fig.width=12, fig.height=5}
 p1 <- DimPlot(data2, group.by = "cell_type", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Previous annotation")
 p2 <- DimPlot(data2, group.by = "predicted.celltype.l2", label = TRUE, label.size = 3) + NoLegend() + ggtitle("New ADT annotation")
 p1 + p2
@@ -195,7 +218,7 @@ p1 + p2
 
 Since the clustering parameters are not 100% same as in the literature, we just compare the annotation using RNA or protein in the current workflow.
 
-```{r pbmc_dimplot_compare, fig.width=12, fig.height=5, eval = FALSE}
+```{r pbmc_dimplot_compare, fig.width=12, fig.height=5}
 p1 <- DimPlot(data1, group.by = "predicted.celltype.l2", label = TRUE, label.size = 3) + NoLegend() + ggtitle("RNA annotation")
 p2 <- DimPlot(data2, group.by = "predicted.celltype.l2", label = TRUE, label.size = 3) + NoLegend() + ggtitle("Protein annotation")
 p1 + p2
@@ -211,12 +234,12 @@ Here, we specifically visualize:
 * Prediction scores for the annotation CD4+ regulatory T cells (Treg)
 
 ```{r pbmc_res1, fig.width = 12, fig.height = 10, eval = FALSE}
-pbmcsca <- NormalizeData(pbmcsca)
-Idents(pbmcsca) <- "predicted.celltype.l2"
-p1 <- FeaturePlot(pbmcsca, features = "CCR7")
-p2 <- FeaturePlot(pbmcsca, features = "FCGR3A")
-p3 <- VlnPlot(pbmcsca, features = "AXL", group.by = "predicted.celltype.l2", idents = c("ASDC", "pDC", "cDC1", "cDC2"))
-p4 <- FeaturePlot(pbmcsca, features = "predictionscorecelltypel2_Treg")
+data1 <- NormalizeData(data1)
+Idents(data1) <- "predicted.celltype.l2"
+p1 <- FeaturePlot(data1, features = "CCR7")
+p2 <- FeaturePlot(data1, features = "FCGR3A")
+p3 <- VlnPlot(data1, features = "AXL", group.by = "predicted.celltype.l2", idents = c("ASDC", "pDC", "cDC1", "cDC2"))
+p4 <- FeaturePlot(data1, features = "predictionscorecelltypel2_Treg")
 p1 + p2 + p3 + p4 + plot_layout(ncol=2)
 ```
 
