@@ -19,9 +19,12 @@ There are three immunologists top challenges included in this Hackathon:
 
 I'll post the analysis pipeline specifically for the challenge #1 and #2 in `/main` folder
 
-The  `/data` folder contains the data download instructions 
+The  `/data` folder contains the data download instructions
+
 The  `/src` folder contains the necessary R functions and other relevant files 
+
 The  `/job` folder contains the qsub script for HPC jobs including the stderr and stdout files
+
 
 
 
