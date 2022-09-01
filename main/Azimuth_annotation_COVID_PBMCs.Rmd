@@ -233,7 +233,7 @@ Here, we specifically visualize:
 * The expression of AXL on rare populations of AXL+SIGLEC6+ dendritic cells ([ASDC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5775029/))
 * Prediction scores for the annotation CD4+ regulatory T cells (Treg)
 
-```{r pbmc_res1, fig.width = 12, fig.height = 10, eval = FALSE}
+```{r pbmc_res1, fig.width = 12, fig.height = 10}
 data1 <- NormalizeData(data1)
 Idents(data1) <- "predicted.celltype.l2"
 p1 <- FeaturePlot(data1, features = "CCR7")
