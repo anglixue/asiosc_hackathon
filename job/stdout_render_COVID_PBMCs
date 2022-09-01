@@ -1,0 +1,130 @@
+  |                                                                              |                                                                      |   0%  |                                                                              |..                                                                    |   3%
+   inline R code fragments
+
+  |                                                                              |....                                                                  |   6%
+label: setup (with options) 
+List of 1
+ $ include: logi FALSE
+
+  |                                                                              |......                                                                |   9%
+  ordinary text without R code
+
+  |                                                                              |........                                                              |  12%
+label: unnamed-chunk-1 (with options) 
+List of 2
+ $ eval  : logi FALSE
+ $ engine: chr "sh"
+
+  |                                                                              |...........                                                           |  15%
+  ordinary text without R code
+
+  |                                                                              |.............                                                         |  18%
+label: installlibraries (with options) 
+List of 1
+ $ eval: logi FALSE
+
+  |                                                                              |...............                                                       |  21%
+  ordinary text without R code
+
+  |                                                                              |.................                                                     |  24%
+label: loadlibraries
+  |                                                                              |...................                                                   |  27%
+  ordinary text without R code
+
+  |                                                                              |.....................                                                 |  30%
+label: pbmc_dimplot_check (with options) 
+List of 2
+ $ fig.width : num 12
+ $ fig.height: num 5
+
+  |                                                                              |.......................                                               |  33%
+  ordinary text without R code
+
+  |                                                                              |.........................                                             |  36%
+label: check cell type ID (with options) 
+List of 1
+ $ echo: logi FALSE
+
+  |                                                                              |............................                                          |  39%
+  ordinary text without R code
+
+  |                                                                              |..............................                                        |  42%
+label: data_explore
+  |                                                                              |................................                                      |  45%
+  ordinary text without R code
+
+  |                                                                              |..................................                                    |  48%
+label: RNA_assay (with options) 
+List of 1
+ $ results: chr "hide"
+
+  |                                                                              |....................................                                  |  52%
+  ordinary text without R code
+
+  |                                                                              |......................................                                |  55%
+label: run_Azimuth_by_RNA-seq (with options) 
+List of 1
+ $ results: chr "hide"
+
+  |                                                                              |........................................                              |  58%
+  ordinary text without R code
+
+  |                                                                              |..........................................                            |  61%
+label: pbmc_dimplot_RNA (with options) 
+List of 2
+ $ fig.width : num 12
+ $ fig.height: num 5
+
+  |                                                                              |.............................................                         |  64%
+  ordinary text without R code
+
+  |                                                                              |...............................................                       |  67%
+label: ADT_assay (with options) 
+List of 1
+ $ results: chr "hide"
+
+  |                                                                              |.................................................                     |  70%
+  ordinary text without R code
+
+  |                                                                              |...................................................                   |  73%
+label: run_Azimuth_by_CITE-seq (with options) 
+List of 1
+ $ results: chr "hide"
+
+  |                                                                              |.....................................................                 |  76%
+  ordinary text without R code
+
+  |                                                                              |.......................................................               |  79%
+label: pbmc_dimplot_ADT (with options) 
+List of 2
+ $ fig.width : num 12
+ $ fig.height: num 5
+
+  |                                                                              |.........................................................             |  82%
+  ordinary text without R code
+
+  |                                                                              |...........................................................           |  85%
+label: pbmc_dimplot_compare (with options) 
+List of 2
+ $ fig.width : num 12
+ $ fig.height: num 5
+
+  |                                                                              |..............................................................        |  88%
+  ordinary text without R code
+
+  |                                                                              |................................................................      |  91%
+label: pbmc_res1 (with options) 
+List of 2
+ $ fig.width : num 12
+ $ fig.height: num 10
+
+  |                                                                              |..................................................................    |  94%
+  ordinary text without R code
+
+  |                                                                              |....................................................................  |  97%
+label: unnamed-chunk-2
+  |                                                                              |......................................................................| 100%
+  ordinary text without R code
+
+
+/share/ScratchGeneral/angxue/software/miniconda3/bin/pandoc +RTS -K512m -RTS Azimuth_annotation_COVID_PBMCs.knit.md --to html4 --from markdown+autolink_bare_uris+tex_math_single_backslash --output Azimuth_annotation_COVID_PBMCs.html --lua-filter /share/ScratchGeneral/angxue/software/miniconda3/envs/py37/lib/R/library/rmarkdown/rmarkdown/lua/pagebreak.lua --lua-filter /share/ScratchGeneral/angxue/software/miniconda3/envs/py37/lib/R/library/rmarkdown/rmarkdown/lua/latex-div.lua --embed-resources --standalone --variable bs3=TRUE --section-divs --template /share/ScratchGeneral/angxue/software/miniconda3/envs/py37/lib/R/library/rmarkdown/rmd/h/default.html --no-highlight --variable highlightjs=1 --variable theme=united --mathjax --variable 'mathjax-url=https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML' --include-in-header /scratch_local/2477905.1.short.q/Rtmpn9EZDH/rmarkdown-str2cec1694d7a66.html 

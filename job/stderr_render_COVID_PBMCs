@@ -1,0 +1,345 @@
+
+
+processing file: Azimuth_annotation_COVID_PBMCs.Rmd
+Attaching SeuratObject
+Attaching sp
+Registered S3 method overwritten by 'SeuratDisk':
+  method            from  
+  as.sparse.H5Group Seurat
+Attaching shinyBS
+── Installed datasets ───────────────────────────────────── SeuratData v0.2.2 ──
+✔ pbmcref 1.0.0                         
+
+────────────────────────────────────── Key ─────────────────────────────────────
+✔ Dataset loaded successfully
+❯ Dataset built with a newer version of Seurat than installed
+❓ Unknown version of Seurat installed
+
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+
+Attaching package: 'kableExtra'
+
+The following object is masked from 'package:dplyr':
+
+    group_rows
+
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Performing log-normalization
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Calculating gene variances
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Calculating feature variances of standardized and clipped values
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Centering and scaling data matrix
+  |                                                                              |                                                                      |   0%  |                                                                              |===================================                                   |  50%  |                                                                              |======================================================================| 100%
+PC_ 1 
+Positive:  ENSG00000085265, ENSG00000101439, ENSG00000066336, ENSG00000197249, ENSG00000204472, ENSG00000090382, ENSG00000163220, ENSG00000129226, ENSG00000197766, ENSG00000121552 
+	   ENSG00000204482, ENSG00000158869, ENSG00000170458, ENSG00000011600, ENSG00000233276, ENSG00000143546, ENSG00000172243, ENSG00000131981, ENSG00000204103, ENSG00000126759 
+	   ENSG00000163191, ENSG00000110077, ENSG00000030582, ENSG00000163131, ENSG00000087086, ENSG00000038427, ENSG00000025708, ENSG00000221869, ENSG00000163221, ENSG00000197405 
+Negative:  ENSG00000110848, ENSG00000185885, ENSG00000168685, ENSG00000008517, ENSG00000227507, ENSG00000152518, ENSG00000167286, ENSG00000118503, ENSG00000177606, ENSG00000173762 
+	   ENSG00000198821, ENSG00000197540, ENSG00000172183, ENSG00000172543, ENSG00000081059, ENSG00000078596, ENSG00000110448, ENSG00000171522, ENSG00000138795, ENSG00000102096 
+	   ENSG00000126353, ENSG00000237943, ENSG00000172005, ENSG00000077984, ENSG00000109452, ENSG00000150347, ENSG00000164674, ENSG00000134285, ENSG00000179144, ENSG00000163519 
+PC_ 2 
+Positive:  ENSG00000105374, ENSG00000077984, ENSG00000172543, ENSG00000145649, ENSG00000180644, ENSG00000115523, ENSG00000100453, ENSG00000137441, ENSG00000134539, ENSG00000100450 
+	   ENSG00000197540, ENSG00000122862, ENSG00000160255, ENSG00000159674, ENSG00000171476, ENSG00000198821, ENSG00000173762, ENSG00000185885, ENSG00000180739, ENSG00000196154 
+	   ENSG00000205336, ENSG00000007264, ENSG00000203747, ENSG00000185201, ENSG00000150045, ENSG00000101474, ENSG00000008517, ENSG00000108518, ENSG00000100385, ENSG00000235162 
+Negative:  ENSG00000105369, ENSG00000156738, ENSG00000153064, ENSG00000247982, ENSG00000116191, ENSG00000196735, ENSG00000167483, ENSG00000204287, ENSG00000144218, ENSG00000136573 
+	   ENSG00000179344, ENSG00000112149, ENSG00000019582, ENSG00000104921, ENSG00000138639, ENSG00000133789, ENSG00000042980, ENSG00000012124, ENSG00000110777, ENSG00000177455 
+	   ENSG00000081189, ENSG00000007312, ENSG00000128218, ENSG00000082438, ENSG00000176533, ENSG00000163534, ENSG00000132185, ENSG00000196628, ENSG00000196126, ENSG00000196092 
+PC_ 3 
+Positive:  ENSG00000231389, ENSG00000223865, ENSG00000100453, ENSG00000019582, ENSG00000105374, ENSG00000105369, ENSG00000180644, ENSG00000196735, ENSG00000156738, ENSG00000115523 
+	   ENSG00000137441, ENSG00000134539, ENSG00000077984, ENSG00000203747, ENSG00000145649, ENSG00000196126, ENSG00000153064, ENSG00000100450, ENSG00000159674, ENSG00000179344 
+	   ENSG00000171476, ENSG00000007312, ENSG00000204287, ENSG00000247982, ENSG00000172543, ENSG00000150045, ENSG00000180739, ENSG00000254087, ENSG00000205336, ENSG00000107968 
+Negative:  ENSG00000168685, ENSG00000172005, ENSG00000138795, ENSG00000237943, ENSG00000081059, ENSG00000109452, ENSG00000142546, ENSG00000163519, ENSG00000184613, ENSG00000182463 
+	   ENSG00000227507, ENSG00000102760, ENSG00000026025, ENSG00000110448, ENSG00000163600, ENSG00000165272, ENSG00000059804, ENSG00000184557, ENSG00000126353, ENSG00000167286 
+	   ENSG00000118503, ENSG00000111863, ENSG00000115687, ENSG00000141232, ENSG00000102245, ENSG00000179144, ENSG00000189283, ENSG00000072110, ENSG00000138449, ENSG00000149212 
+PC_ 4 
+Positive:  ENSG00000120129, ENSG00000128016, ENSG00000171223, ENSG00000100906, ENSG00000170345, ENSG00000125740, ENSG00000177606, ENSG00000152518, ENSG00000118503, ENSG00000153234 
+	   ENSG00000110848, ENSG00000160888, ENSG00000026025, ENSG00000125347, ENSG00000158050, ENSG00000099860, ENSG00000044574, ENSG00000143384, ENSG00000102760, ENSG00000168209 
+	   ENSG00000130844, ENSG00000179820, ENSG00000185650, ENSG00000051108, ENSG00000169442, ENSG00000135046, ENSG00000144802, ENSG00000092820, ENSG00000112149, ENSG00000059804 
+Negative:  ENSG00000163736, ENSG00000101162, ENSG00000168497, ENSG00000163737, ENSG00000113140, ENSG00000204420, ENSG00000127920, ENSG00000169704, ENSG00000101335, ENSG00000154146 
+	   ENSG00000124491, ENSG00000166091, ENSG00000161911, ENSG00000120885, ENSG00000005249, ENSG00000180573, ENSG00000005961, ENSG00000095303, ENSG00000150681, ENSG00000111644 
+	   ENSG00000088726, ENSG00000187699, ENSG00000035403, ENSG00000162722, ENSG00000254614, ENSG00000145335, ENSG00000156265, ENSG00000140416, ENSG00000184702, ENSG00000137198 
+PC_ 5 
+Positive:  ENSG00000169554, ENSG00000245532, ENSG00000269028, ENSG00000119535, ENSG00000132334, ENSG00000008083, ENSG00000137801, ENSG00000038427, ENSG00000229989, ENSG00000018280 
+	   ENSG00000161638, ENSG00000137331, ENSG00000135077, ENSG00000115523, ENSG00000159216, ENSG00000120594, ENSG00000125772, ENSG00000125740, ENSG00000185215, ENSG00000147454 
+	   ENSG00000124882, ENSG00000151726, ENSG00000107968, ENSG00000167680, ENSG00000112137, ENSG00000100644, ENSG00000134539, ENSG00000134107, ENSG00000167604, ENSG00000186431 
+Negative:  ENSG00000169442, ENSG00000205542, ENSG00000227507, ENSG00000108518, ENSG00000184009, ENSG00000160932, ENSG00000167286, ENSG00000142546, ENSG00000180879, ENSG00000075624 
+	   ENSG00000100911, ENSG00000166794, ENSG00000185885, ENSG00000111229, ENSG00000172725, ENSG00000139193, ENSG00000149925, ENSG00000175567, ENSG00000008517, ENSG00000111640 
+	   ENSG00000103187, ENSG00000165272, ENSG00000160213, ENSG00000104904, ENSG00000172005, ENSG00000168685, ENSG00000142669, ENSG00000088832, ENSG00000196230, ENSG00000130429 
+Computing nearest neighbor graph
+Computing SNN
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+1 singletons identified. 21 final clusters.
+Warning: The default method for RunUMAP has changed from calling Python UMAP via reticulate to the R-native UWOT using the cosine metric
+To use Python UMAP via reticulate, set umap.method to 'umap-learn' and metric to 'correlation'
+This message will be shown once per session
+13:02:34 UMAP embedding parameters a = 0.9922 b = 1.112
+13:02:34 Read 372081 rows and found 30 numeric columns
+13:02:34 Using Annoy for neighbor search, n_neighbors = 30
+13:02:34 Building Annoy index with metric = cosine, n_trees = 50
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+13:03:21 Writing NN index file to temp file /scratch_local/2477905.1.short.q/Rtmpn9EZDH/file2cec11deb532c
+13:03:21 Searching Annoy index using 1 thread, search_k = 3000
+13:06:21 Annoy recall = 100%
+13:06:23 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+13:06:45 Initializing from normalized Laplacian + noise (using irlba)
+13:09:46 Commencing optimization for 200 epochs, with 16889188 positive edges
+Using method 'umap'
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+13:18:23 Optimization finished
+Warning: Overwriting miscellanous data for model
+detected inputs from HUMAN with id type Gene.stable.ID
+reference rownames detected HUMAN with id type Gene.name
+Found 17194 out of 30761 total inputs in conversion table
+Using reference SCTModel to calculate pearson residuals
+Determine variable features
+Setting min_variance to:  -Inf
+Calculating residuals of type pearson for 3546 genes
+  |                                                                              |                                                                      |   0%  |                                                                              |==============                                                        |  20%  |                                                                              |============================                                          |  40%  |                                                                              |==========================================                            |  60%  |                                                                              |========================================================              |  80%  |                                                                              |======================================================================| 100%
+Set default assay to refAssay
+Normalizing query using reference SCT model
+Projecting cell embeddings
+Finding query neighbors
+Finding neighborhoods
+Finding anchors
+	Found 17379 anchors
+Finding integration vectors
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Predicting cell labels
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l1_ to predictionscorecelltypel1_
+Predicting cell labels
+Warning: Feature names cannot have underscores ('_'), replacing with dashes ('-')
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l2_ to predictionscorecelltypel2_
+Predicting cell labels
+Warning: Feature names cannot have underscores ('_'), replacing with dashes ('-')
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l3_ to predictionscorecelltypel3_
+
+Integrating dataset 2 with reference dataset
+Finding integration vectors
+Integrating data
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from integrated_dr_ to integrateddr_
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from integrated_dr_ to integrateddr_
+Warning: All keys should be one or more alphanumeric characters followed by an underscore '_', setting key to integrateddr_
+Computing nearest neighbors
+Running UMAP projection
+13:41:02 Read 372081 rows
+13:41:02 Processing block 1 of 1
+13:41:02 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 20
+13:41:06 Initializing by weighted average of neighbor coordinates using 1 thread
+13:41:07 Commencing optimization for 67 epochs, with 7441620 positive edges
+Using method 'umap'
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+13:43:30 Finished
+Warning: No assay specified, setting assay as RNA by default.
+Projecting reference PCA onto query
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Projecting back the query cells into original PCA space
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Computing scores:
+    Finding neighbors of original query cells
+    Finding neighbors of transformed query cells
+    Computing query SNN
+    Determining bandwidth and computing transition probabilities
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Total elapsed time: 6.44596281846364
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Normalizing across cells
+Calculating gene variances
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Calculating feature variances of standardized and clipped values
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Centering and scaling data matrix
+  |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
+PC_ 1 
+Positive:  CD303, TCR Vα24-Jα18, CD223 (LAG-3), CD124, CD204, CD158f, c-Met, CD178, CD106, XCR1 
+	   CD144, CD267, Phospho-Tau, CD169, CD70, CD133, CD279, CD307d, CD137, CD336 
+	   CD269, CD309, IgG1, κ, DR3, CD324, CD80, CD209, TSLPR, Mac-2, CD117 
+Negative:  CD11b, CD31, CD41, CD371, CD11c, CD36, CD305, CD33, CD62P, CD45 
+	   CD47, CD328, CD29, CD18, CD11a, CD101, CD35, CD49b, CD39, HLA-A,B,C 
+	   CD14, CD38, CD54, CD32, CD86, HLA-DR, CD95, CD15, Ig light chain κ, CD64 
+PC_ 2 
+Positive:  CD1d, CD371, CD88, CD35, CD33, CD39, CD11c, CD31, CD36, CD32 
+	   CD14, CD64, HLA-DR, CD85j, CD58, CD11b, CD328, CD305, CD86, CD155 
+	   CD49b, CD54, CD101, GARP, CD41, Ig light chain λ, TCR Vα24-Jα18, XCR1, CD123, CD38 
+Negative:  CD2, CD5, CD3, CD28, TCR α/β, CD7, CD27, CD45, CD278, CD4 
+	   CD52, CD127, CD99, CD26, CD81, CD45RO, CD226, CD62L, CD194, CD8 
+	   CD197, KLRG1, CD49f, CD96, CD235ab, CD47, CD15, CD11a, CD44, CD183 
+PC_ 3 
+Positive:  CD58, CD95, CD49f, CD11a, CD226, CD371, CD36, CD18, CD33, CD88 
+	   CD155, CD244, CD41, CD101, CD29, CD14, CD11c, CD11b, CD49b, CD45RO 
+	   CD328, CD224, CD62P, CD99, CD64, CD2, CD163, CD31, CD86, CD4 
+Negative:  CD21, CD20, CD19, CD22, CD268, IgD, IgM, CD40, CD73, CD32 
+	   CD24, CD272, CD45RA, HLA-DR, Ig light chain κ, CD52, CD79b, CD82, Ig light chain λ, CD185 
+	   CD35, CD1c, IgA, HLA-A,B,C, CD39, Integrin β7, CD360, CD81, CD62L, CD71 
+PC_ 4 
+Positive:  CD4, CD45RO, CD224, CD28, CD49f, CD82, CD26, CD127, CD5, CD52 
+	   CD194, IgG Fc, IgA, CD278, CD47, CD44, CD150, CD25, Ig light chain κ, Ig light chain λ 
+	   CD35, CD101, CD88, CD1d, IgM, CD36, CD95, CD49b, CD79b, CD33 
+Negative:  CD244, CD45RA, CD94, CD56 (NCAM), CD16, CD122, CD314, CD335, KLRG1, CD158b 
+	   CD38, CD8, CD158, CD7, CD235ab, CX3CR1, CD11a, CD337, CD57, CD319 
+	   CD49d, TIGIT (VSTM3), CD360, CD158e1, CD305, CD81, CD328, CD45, CD366, TCR Vγ9 
+PC_ 5 
+Positive:  CD66b, CD15, CD275, CD326, CD154, CD207, CD66a/c/e, TCR γ/δ, CD197, CD90 
+	   CD3, CD24, B7-H4, TCR α/β, CD27, CD1c, CD16, LOX-1, CD252(OX40L), CD107a 
+	   CD138, CD269, CD294, Podocalyxin, CD254, CD88, CD357 (GITR), CD337, CD184, CD34 
+Negative:  CD57, CD79b, CD18, CD54, CD99, CD11a, CD47, CD82, CD224, CD44 
+	   CD49d, CD26, CD150, KLRG1, CD73, HLA-A,B,C, CD127, CD244, CD96, CD2 
+	   CD195, CD279, TCR Vα24-Jα18, CX3CR1, CD56 (NCAM), CD69, CD194, NLRP2, CD45RO, CD273 
+Computing nearest neighbor graph
+Computing SNN
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+14:26:12 UMAP embedding parameters a = 0.9922 b = 1.112
+14:26:12 Read 372081 rows and found 30 numeric columns
+14:26:12 Using Annoy for neighbor search, n_neighbors = 30
+14:26:12 Building Annoy index with metric = cosine, n_trees = 50
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+14:27:00 Writing NN index file to temp file /scratch_local/2477905.1.short.q/Rtmpn9EZDH/file2cec14f73e0d1
+14:27:00 Searching Annoy index using 1 thread, search_k = 3000
+14:29:44 Annoy recall = 100%
+14:29:49 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+14:30:08 Initializing from normalized Laplacian + noise (using irlba)
+14:31:54 Commencing optimization for 200 epochs, with 17114420 positive edges
+Using method 'umap'
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+14:40:52 Optimization finished
+Warning: Overwriting miscellanous data for model
+detected inputs from HUMAN with id type Gene.name
+reference rownames detected HUMAN with id type Gene.name
+Using reference SCTModel to calculate pearson residuals
+Determine variable features
+Setting min_variance to:  -Inf
+Calculating residuals of type pearson for 31 genes
+  |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
+Set default assay to refAssay
+Normalizing query using reference SCT model
+Projecting cell embeddings
+Finding query neighbors
+Finding neighborhoods
+Finding anchors
+	Found 184 anchors
+Finding integration vectors
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Predicting cell labels
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l1_ to predictionscorecelltypel1_
+Predicting cell labels
+Warning: Feature names cannot have underscores ('_'), replacing with dashes ('-')
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l2_ to predictionscorecelltypel2_
+Predicting cell labels
+Warning: Feature names cannot have underscores ('_'), replacing with dashes ('-')
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from predictionscorecelltype.l3_ to predictionscorecelltypel3_
+
+Integrating dataset 2 with reference dataset
+Finding integration vectors
+Integrating data
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from integrated_dr_ to integrateddr_
+Warning: Keys should be one or more alphanumeric characters followed by an underscore, setting key from integrated_dr_ to integrateddr_
+Warning: All keys should be one or more alphanumeric characters followed by an underscore '_', setting key to integrateddr_
+Computing nearest neighbors
+Running UMAP projection
+14:48:45 Read 372081 rows
+14:48:45 Processing block 1 of 1
+14:48:45 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 20
+14:48:49 Initializing by weighted average of neighbor coordinates using 1 thread
+14:48:50 Commencing optimization for 67 epochs, with 7441620 positive edges
+Using method 'umap'
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+14:51:17 Finished
+Warning: No assay specified, setting assay as RNA by default.
+Projecting reference PCA onto query
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Projecting back the query cells into original PCA space
+Finding integration vector weights
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Computing scores:
+    Finding neighbors of original query cells
+    Finding neighbors of transformed query cells
+    Computing query SNN
+    Determining bandwidth and computing transition probabilities
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Total elapsed time: 4.26684871912003
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Performing log-normalization
+0%   10   20   30   40   50   60   70   80   90   100%
+[----|----|----|----|----|----|----|----|----|----|
+**************************************************|
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+Rasterizing points since number of points exceeds 100,000.
+To disable this behavior set `raster=FALSE`
+output file: Azimuth_annotation_COVID_PBMCs.knit.md
+
+
+Output created: Azimuth_annotation_COVID_PBMCs.html

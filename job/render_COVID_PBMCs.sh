@@ -13,6 +13,6 @@ cd $SGE_O_WORKDIR
 
 Rscript=/share/ScratchGeneral/angxue/software/miniconda3/envs/py37/bin/Rscript
 
-$Rscript -e 'library(rmarkdown); rmarkdown::render("Azimuth_annotation_COVID_PBMCs.Rmd", "html_document")'
+$Rscript -e 'library(rmarkdown); rmarkdown::render("../main/Azimuth_annotation_COVID_PBMCs.Rmd", "html_document")'
 
 
