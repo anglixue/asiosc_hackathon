@@ -15,7 +15,7 @@ You can preview the results in the following [link](https://htmlpreview.github.i
 
 The whole analysis took ~ 2h 12 mins in the HPC.
 
-Update on 13-SEP-2022
+style="color: red;">Update on 13-SEP-2022</span>
 
 We tried to use sc2marker to find the minimal protein markers to differentiate certain cell type from the rest of the clusters. The results can be found in the following [link](https://htmlpreview.github.io/?https://github.com/anglixue/asiosc_hackathon/blob/main/main/COVID_innate_adaptive_ADT.sc2marker.report.html)
 
