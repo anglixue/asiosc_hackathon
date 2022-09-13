@@ -15,6 +15,12 @@ You can preview the results in the following [link](https://htmlpreview.github.i
 
 The whole analysis took ~ 2h 12 mins in the HPC.
 
+Update on 13-SEP-2022
+
+We tried to use sc2marker to find the minimal protein markers to differentiate certain cell type from the rest of the clusters. The results can be found in the following [link](https://htmlpreview.github.io/?https://github.com/anglixue/asiosc_hackathon/blob/main/main/COVID_innate_adaptive_ADT.sc2marker.report.html)
+
+The whole analysis for 24 cell types took ~ 1h in the MacBook pro.
+
 ## 2.  Triana_et_al_Nat_Immunol_2021_Leukemia ([Paper](https://doi.org/10.1038/s41590-021-01059-0))
 
 You can preview the results in the following (page under construction)
