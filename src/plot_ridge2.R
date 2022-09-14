@@ -37,7 +37,7 @@ plot_ridge2 = function (scrna, id, genes, ncol = 1, step = 0.01, show_split = T,
       theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5))
     df.split$Gene <- factor(df.split$Gene, levels = c(genes))
     g <- g + facet_wrap(~Gene, ncol = ncol) + geom_vline(data = df.split, 
-                                                         aes(xintercept = Split), linetype = "dotted", color = "red", 
+                                                         aes(xintercept = log2(Split+1)), linetype = "dotted", color = "red", 
                                                          size = 1.5) + labs(fill = "Expression")
   }
   else {
@@ -62,7 +62,7 @@ plot_ridge2 = function (scrna, id, genes, ncol = 1, step = 0.01, show_split = T,
       scale_fill_viridis_c(option = "D") + theme(legend.position = "none") + 
       theme(plot.title = element_text(hjust = 0.5), plot.subtitle = element_text(hjust = 0.5)) + 
       ylab("") + xlab("")
-    g <- g + geom_vline(data = df.split, aes(xintercept = Split), 
+    g <- g + geom_vline(data = df.split, aes(xintercept = log2(Split+1)), 
                         linetype = "dotted", color = "red", size = 1.5) + 
       facet_wrap(~Gene, ncol = ncol)
   }

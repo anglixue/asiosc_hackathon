@@ -1,0 +1,439 @@
+---
+title: "sc2marker"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: yes
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r fig.align='center',echo=F, warning=FALSE}
+suppressMessages(require(DT))
+suppressMessages(require(Seurat))
+suppressMessages(require(reshape2))
+suppressMessages(require(ggplot2))
+suppressMessages(require(ggridges))
+suppressMessages(require(dplyr))
+suppressMessages(library(sc2marker))
+source("../src/plot_ridge2.R")
+scrna <- readRDS("../../results/sc2marker.all.scrna.intermediate.rds")
+markers.all <- readRDS("../../results/sc2marker.all.allmarkers.intermediate.rds")
+```
+
+
+We tried to use [sc2marker](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/s12859-022-04817-5) to find the minimal protein markers to differentiate a certain cell type from the rest of the clusters. 
+
+There are 24 cell types in total in this dataset. Each cell type was provided a list of markers and their corresponding ranking scores. TP: true positives, FP: false positives, TN: true negatives, FN: false negatives. The direction indicates whether the marker is highly (+) / lowly(-) expressed in the specific cell type compared to the rest groups. The x-axis in the ridge plot is in log2(x+1) scale. The red dashed line indicatesd the ranking score for each gene.
+
+
+# Cluster: `r paste("non-classical monocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "non-classical monocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("classical monocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "classical monocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("CD16-positive, CD56-dim natural killer cell, human")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "CD16-positive, CD56-dim natural killer cell, human"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("natural killer cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "natural killer cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("plasmacytoid dendritic cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "plasmacytoid dendritic cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("conventional dendritic cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "conventional dendritic cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("platelet")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "platelet"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("CD16-negative, CD56-bright natural killer cell, human")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "CD16-negative, CD56-bright natural killer cell, human"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("granulocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "granulocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("intermediate monocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "intermediate monocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("naive B cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "naive B cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("memory B cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "memory B cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("gamma-delta T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "gamma-delta T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("plasmablast")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "plasmablast"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("regulatory T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "regulatory T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("CD4-positive, alpha-beta memory T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "CD4-positive, alpha-beta memory T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("CD8-positive, alpha-beta memory T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "CD8-positive, alpha-beta memory T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("naive thymus-derived CD8-positive, alpha-beta T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "naive thymus-derived CD8-positive, alpha-beta T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("naive thymus-derived CD4-positive, alpha-beta T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "naive thymus-derived CD4-positive, alpha-beta T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("mucosal invariant T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "mucosal invariant T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("memory T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "memory T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("double-positive, alpha-beta thymocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "double-positive, alpha-beta thymocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("double negative thymocyte")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "double negative thymocyte"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
+# Cluster: `r paste("T cell")`
+
+## Table
+
+```{r fig.align='center',echo=T, warning=FALSE}
+celltype <- "T cell"
+markers <- markers.all[[celltype]]; markers$`FP details`=NA
+get_antibody(markers, org = "human")
+```
+
+## Ridge
+
+```{r fig.align='center',echo=T, warning=FALSE,message=F, fig.width=10, fig.height=8}
+plot_ridge2(scrna, id = celltype, genes = markers[1:6,]$gene, 
+           aggr.other = FALSE, ncol = 3, assay = "ADT", slot = "data")
+```
+
